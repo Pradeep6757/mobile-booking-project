@@ -1,7 +1,10 @@
 package com.example.Mobile.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class MobileModel {
@@ -11,6 +14,17 @@ public class MobileModel {
 	private String battery;
 	private String storage;
 	private int cost;
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="fid") 
+	private FeaturesModel fid;
+	
+	
+	public FeaturesModel getFid() {
+		return fid;
+	}
+	public void setFid(FeaturesModel fid) {
+		this.fid = fid;
+	}
 	MobileModel(){}
 	public int getModelnumber() {
 		return modelnumber;
